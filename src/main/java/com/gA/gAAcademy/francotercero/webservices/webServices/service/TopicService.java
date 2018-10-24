@@ -1,5 +1,7 @@
 package com.gA.gAAcademy.francotercero.webservices.webServices.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +15,11 @@ public class TopicService {
 	TopicRepository topicRepository;
 	
 	public Topic createTopic(Topic inputTopic) {
-		
 		Topic t = topicRepository.save(inputTopic);  // le decimos al repositorio que no sguarde esta variable, en esa variable tenemos el topic que nos pasa el parametro en el llamado
-		
-		
 		return t;
 	}
-	
-	
-	
-	
+	public List<Topic> getTopics(){
+		List<Topic> list = topicRepository.findAll();
+		return list;
+	}
 }
