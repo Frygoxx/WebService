@@ -7,4 +7,5 @@ import com.gA.gAAcademy.francotercero.webservices.webServices.entity.Topic;
 
 public interface TopicRepository extends JpaRepository<Topic,Integer> {
 
+
 }
