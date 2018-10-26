@@ -18,13 +18,17 @@ public class Topic {
 	private String title;
 	
 	@Column(name = "datePost")
-	private Date datePost;
+	private Date datePost = new Date();
 	
 	@Column(name = "description")
 	private String description;
 	
 	@Column(name = "author")
 	private int author;
+	
+	@Column(name = "deleted")
+	private Boolean deleted = false;
+	
 	
 	public Topic() {}
 
@@ -35,6 +39,7 @@ public class Topic {
 		this.datePost = d;
 		this.description = description;
 		this.author = author;
+		this.deleted = false;
 	}
 
 	public int getId() {
@@ -72,5 +77,19 @@ public class Topic {
 	public void setAuthor(int author) {
 		this.author = author;
 	}
-		
+
+	public Boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(Boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public void deleted() {
+		this.deleted = true;
+	}
+
 }
+
+

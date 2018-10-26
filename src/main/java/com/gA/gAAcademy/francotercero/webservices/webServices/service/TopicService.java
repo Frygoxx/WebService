@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.gA.gAAcademy.francotercero.webservices.webServices.entity.Topic;
 import com.gA.gAAcademy.francotercero.webservices.webServices.repository.TopicRepository;
@@ -45,5 +43,19 @@ public class TopicService {
 		
 		return topic;
 		
+	}
+	public int deleteTopicFis(int id) {
+		topicRepository.deleteById(id);
+		return id;
+	}
+	public int deleteLogicTopic(int id) {
+		int toReturn = 0;
+		Topic topic = topicRepository.findById(id).get();
+		if (!topic.isDeleted()) {
+			topic.deleted();
+			toReturn = topic.getId();
+			topicRepository.save(topic);	
+		}
+		return toReturn;
 	}
 }
